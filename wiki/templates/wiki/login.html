@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Логин :: {{ block.super }}
+{% endblock %}
+
+
+{% block login %}
+
+<form  method = 'post' class = 'login-card'>
+  <h1 class="title">Логин</h1>
+  {% csrf_token %}
+  {{ form.as_p }} <!-- заключаем поля формы в параграф -->
+  <button type="submit" class="hover-slide">Войти</button>
+  <!-- <button type = 'submit' class = 'btn btn-primary btn-block'>Войти</button> -->
+</form>
+
+<div class="login" id="login">
+    <div class="login-info">
+        <img src="{% static 'img/Group.png' %}" alt="" class = 'img1'>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed pariatur suscipit modi animi 
+        voluptate. Odio, fuga! Nihil atque aliquam nam, ullam incidunt quam illum placeat, nemo, modi expedita 
+        illo at. Nemo praesentium quia quisquam in illum! Mollitia deleniti earum quaerat. Impedit excepturi doloribus.
+      </p>
+    </div>
+</div>
+
+{% endblock %}

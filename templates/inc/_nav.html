@@ -1,0 +1,42 @@
+{% load static %} 
+
+
+<nav class="navbar-head">
+    
+    <a href="{% url 'home' %}"><img src="{% static 'img/Group.png' %}" alt="logo" class = 'logo'></a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> -->
+    <!-- </button> -->
+    
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+    <ul class="nav-list"> 
+        {% if request.user.is_authenticated %}
+            <li><a class="nav-item" href="{% url 'home' %}">Главная</a></li>
+            <li><a class="nav-item" href="{% url 'add_wiki' %}">Добавить информацию</a></li>    
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <!-- Добро пожаловать {{user.username}} | <a href="{% url 'logout'%}">Выход</a> -->
+            <li class="login-link">
+                <p>Добро пожаловать {{user.username}}</p>
+                <a href="{% url 'logout'%}" class="nav-item">Выйти</a>
+            </li>
+        {% else %}
+
+        <!-- <a href="{% url 'register' %}">Register</a> |  -->
+        <a href="{% url 'login' %}">Login</a>
+
+        {% endif%}
+    </ul>
+
+    <!-- <nav class="navbar" id="navbar">
+        <a href="/"><img src="./img/Group 2.png" alt="logo" class="logo"></a>
+        
+    </nav> -->
+
+    
+
+
+    <!-- </div> -->
+    
+</nav>    
+

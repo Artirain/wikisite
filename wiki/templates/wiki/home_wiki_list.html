@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="news-list">
+{% for item in wiki %} <!-- тег -->
+    <div class="news-card">
+        <p class="card-category">Категория: <a href="{{ item.category.get_absolute_url }}">{{ item.category }}</a></p>         
+        <div class="card-body">
+            {% if item.photo %}
+            <img src=" {{ item.photo.url }}" alt="" width="350" class="mr-3">
+            {% else %}
+
+            {% endif %}
+            
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text">{{ item.content|safe|linebreaks|truncatewords:40 }}</p>
+            <a href="{{ item.get_absolute_url }}" class="card-more hover-slide">Read more...<span></span></a>
+               
+        </div>
+        <p class="card-date">
+            {{ item.created_at | date:"Y-m-d" }} <!-- фильтр |, бывают с аргументами, бывают без аргументов -->
+        </p>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
+
+
+

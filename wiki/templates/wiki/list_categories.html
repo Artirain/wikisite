@@ -1,0 +1,7 @@
+<div class="category-list">
+   
+    {% for item in categories %}
+        <li class="hover-slide"><a href="{% url 'category' item.pk %}" class="category-item">{{ item.title }}</a></li>
+    {% endfor %}
+   
+</div>

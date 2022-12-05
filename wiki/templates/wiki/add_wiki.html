@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавление новости :: {{ block.super }}
+{% endblock %}
+
+
+{% block content-add %}
+
+
+<form action="{% url 'add_wiki'%}" method = 'post'>
+    <style>
+        .content {
+            display:none;
+        }
+    </style>
+
+    {% csrf_token %} 
+
+    {% comment %}
+    {{ form.as_p }} <!-- заключаем поля формы в параграф -->
+    {% endcomment %}
+    
+   
+    <div class="add">
+        {{ form.non_field.errors}} <!-- ошибки валидации которые не свяязаны с видимыми полями-->
+        <span class="add-block"></span>
+        <div class="add-form">
+            <h1 class="add-title">Добавление новости</h1>
+        <!-- <div class="form-group"> -->
+            <!-- <label for="{{ form.title.id_for_label }}"></label> -->
+            {{ form.title }}
+            <div class="invalid-feedback">
+                {{ form.title.errors}}
+            </div>
+        
+    
+        
+            <!-- <label for="{{ form.content.id_for_label }}"></label> -->
+            {{ form.content }}
+            <div class="invalid-feedback">
+                {{ form.content.errors}}
+            </div>
+        
+    
+            <!-- for="{{ form.is_published.id_for_label }}" -->
+            {{ form.is_published }}
+            <label for="{{ form.is_published.id_for_label }}">Опубликовано:</label>
+            <div class="invalid-feedback">
+                {{ form.is_published.errors}}
+            </div>
+        
+        
+        
+            <!-- <label for="{{ form.category.id_for_label }}"></label> -->
+            {{ form.category }}
+            <div class="invalid-feedback">
+                {{ form.category.errors}}
+            </div>
+        <!-- </div> -->
+            <button type = 'submit' class = 'form-send hover-slide'>Добавить новость</button>
+        </div>
+    
+       
+        {% comment %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field}}
+            <div class="invalid-feedback">
+                {{ field.errors }}
+            </div>
+        </div>
+        {% endfor %}
+        {% endcomment %}
+        
+    </div>
+  
+
+</form>
+
+{% endblock %}
+
+
+

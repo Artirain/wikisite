@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ wiki_item.title }} :: {{ block.super }}
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="news-card">
+    <div class="card-category">     
+        Категория: <a href="{{ wiki_item.category.get_absolute_url }}">{{ wiki_item.category }}</a> <!-- обращаемся к шаблонизатору Jinja -->
+    </div>
+    <div class="card-img">
+        
+        <div class="card-body">
+            <h5 class="card-title">{{ wiki_item.title }}</h5>
+            <p class="card-text">{{ wiki_item.content }}</p>
+        </div>
+    
+    </div>
+    <div class="card-date">
+        {{ wiki_item.created_at | date:"Y-m-d" }} <!-- фильтр |, бывают с аргументами, бывают без аргументов -->
+    </div>
+</div>
+
+{% endblock %}
+

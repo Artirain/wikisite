@@ -1,0 +1,26 @@
+{% comment %}
+{% extends 'base.html' %}
+
+{% block title %}
+Регистрация :: {{ block.super }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<h1>Регистрация</h1>
+
+<form  method = 'post'>
+    {% csrf_token %}
+
+    {{ form.as_p }} <!-- заключаем поля формы в параграф -->
+
+    <button type = 'submit' class = 'btn btn-primary btn-block'>Регистрация</button>
+</form>
+
+{% endblock %}
+
+{% endcomment %}
+
+

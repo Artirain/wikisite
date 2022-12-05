@@ -1,0 +1,18 @@
+{% load wiki_tags %} <!-- импортируем -->
+{% comment %}
+<div class="category-list">
+    {% get_categories as categories %} <!-- присваиваем в переменную с помощью тега as -->
+    {% for item in categories %}
+        <li class="hover-slide"><a href="{% url 'category' item.pk %}" class="category-item">{{ item.title }}</a></li>
+    {% endfor %}
+</div>
+
+<br>
+{% endcomment %}
+
+
+{% if request.user.is_authenticated %}
+
+{% show_categories %}
+
+{% endif %}
